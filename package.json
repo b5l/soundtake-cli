@@ -5,6 +5,7 @@
   "license": "CC0-1.0",
   "description": "Uses the soundtake.net service to batch download any SoundCloud content",
   "main": "app.js",
+  "repository": "https://github.com/benjaminlaib/soundtake-cli",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "commander": "^2.15.1",

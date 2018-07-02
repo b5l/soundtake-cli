@@ -1,5 +1,5 @@
 ﻿# SoundTake CLI
-This library uses the [SoundTake](soundtake.net) service to batch download any SoundCloud content.
+This library uses the [SoundTake](https://www.soundtake.net) service to batch download any SoundCloud content.
 
 ## Installation
 

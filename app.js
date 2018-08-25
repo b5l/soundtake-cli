@@ -13,7 +13,7 @@ program
     .name('soundtake')
     .description('this script uses the www.soundtake.net service to batch download any SoundCloud content.')
     .option('-u, --url [url]', 'the SoundCloud URL you want to download')
-    .option('-d, --output [directory]', 'the directory to download the files into')
+    .option('-l, --destination [directory]', 'the directory to download the files into')
     .option('--proxy-host [host]', 'proxy server host')
     .option('--proxy-port [port]', 'proxy server port')
     .parse(process.argv);
@@ -93,8 +93,8 @@ function downloadLinks(links, index = 0) {
 
 function downloadLink(link) {
     return new Promise((resolve, reject) => {
-        if (program.output && !fs.existsSync(program.output))
-            fs.mkdirSync(program.output);
+        if (program.destination && !fs.existsSync(program.destination))
+            fs.mkdirSync(program.destination);
 
         let req = http.get(link, res => {
             let regex = /filename=\"(.*)\"/gi.exec(res.headers['content-disposition']);
@@ -106,7 +106,7 @@ function downloadLink(link) {
             }
 
             let filename = regex[1].replace(/[/\\?%*:|"<>]/g, '-').replace(' [soundtake.net]', ''),
-                path = program.output ? `${program.output}/${filename}` : filename,
+                path = program.destination ? `${program.destination}/${filename}` : filename,
                 file,
                 contentLength = parseInt(res.headers['content-length'], 10),
                 downloaded = 0;
